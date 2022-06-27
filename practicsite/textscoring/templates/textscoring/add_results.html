@@ -1,0 +1,65 @@
+{% load static %}
+<html lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{%static 'admin/css/style.css' %}">
+     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+    <title>Petrov IDF-TF</title>
+</head>
+<body>
+
+
+<header class="header">
+    <div class="container">
+        <div class="header__inner"> <h2>Данный сайт предназначен для высчитывания текста по IDF-TF, а также для поиска топ 3 повторяющихся слов в каждом из текстов</h2>
+            <nav class="nav">
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+
+
+<div class="intro">
+    <div class="container">
+        <div class="intro__inner">
+            <div class="enter__area">
+
+                <p><b>Введите первый текст:</b></p>
+                <form action=" {% url 'add_results' %}" method="post">
+                    {% csrf_token %}
+                <p><textarea placeholder="Введите текст..." class="enter__field" id="input_text1" name="input_text1"></textarea></p>
+
+
+                <p><b>Введите второй текст:</b></p>
+                <p><textarea placeholder="Введите текст..." class="enter__field" id="input_text2" name="input_text2"></textarea></p>
+
+                    <button type="submit">IDF-TF -> </button>
+                </form>
+            </div>
+
+
+            <div class="result__area">
+
+                <div class="count1_result__area">
+                    <p><b>Топ 3 повторяющихся слова в первом тексте:</b></p>
+                    <p><textarea placeholder="(слово, кол-во повторений)" class="count_result__field">{{ record.text1_count_out }}</textarea></p>
+                </div>
+
+
+                <p><b>Топ 3 повторяющихся слова во втором тексте:</b></p>
+                <p><textarea placeholder="(слово, кол-во повторений)" class="count_result__field">{{ record.text2_count_out }}</textarea></p>
+
+
+                <p><b>Pезультат работы IDF-TF:</b></p>
+                <p><textarea placeholder="IDF-TF:" class="result__field_IDF-TF">{{ record.both_texts_IDF_TF_out }}</textarea></p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
