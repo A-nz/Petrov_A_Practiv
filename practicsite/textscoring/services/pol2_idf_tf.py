@@ -33,7 +33,7 @@ def line_norm(splited_line: list[str]):
 
 def tf_count(text: list):
     line_norm(text)
-    tf_text = Counter(text).most_common(3)
+    tf_text = Counter(text).most_common(5)
     return tf_text
 
 
